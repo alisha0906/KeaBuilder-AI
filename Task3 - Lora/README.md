@@ -223,19 +223,6 @@ Notify user (email + in-app)
 
 ---
 
-## File Structure
-
-```
-task3/
-├── code/
-│   ├── lora_pipeline.py     ← core: registry, base model, inference, inject/eject
-│   ├── lora_trainer.py      ← training job: validation, job submission, registration
-│   └── app.py               ← Flask API gateway
-├── sample_outputs/
-│   └── output.json          ← 5 scenarios: success, base model, training, errors
-└── README.md                ← this file
-```
-
 ---
 
 ## Running the Code
