@@ -1,28 +1,3 @@
-# Task-5-AI-Fallback-Strategy
-
-## Project Structure
-
-```text
-Task-5-AI-Fallback-Strategy/
-│
-├── README.md
-│
-├── architecture/
-│   └── fallback_strategy.txt
-│
-├── code/
-│   ├── fallback_handler.py
-│   ├── sample_request.json
-│   └── sample_response.json
-│
-└── notes/
-    └── user_experience_flow.txt
-```
-
----
-
-# README.md
-
 # Task 5 — AI Service Fallback Strategy
 
 ## Overview
