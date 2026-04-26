@@ -140,20 +140,20 @@ CRM Update + Sales Team Notification
 ```
 
 # Tech Stack
-# Backend
+### Backend
 - Python
 - FastAPI
 
-# LLM Integration
+### LLM Integration
 - GROQ API
 - Llama 3 Model
 
-# Prompt Engineering
+### Prompt Engineering
 - JSON strured outputs
 - Prompt-base classification
 - Prompt-based response generation
 
-# Environment Management
+### Environment Management
 - python-dotenv
 
 ### Lead Classification Logic
