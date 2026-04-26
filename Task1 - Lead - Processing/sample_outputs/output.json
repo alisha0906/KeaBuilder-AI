@@ -1,0 +1,16 @@
+{
+  "lead_category": "HOT",
+  "lead_score": 92,
+  "pain_score": 88,
+  "frustration_score": 82,
+  "confidence_score": 94,
+  "buying_intent_detected": true,
+  "recommended_channel": "Phone Call",
+  "recommended_strategy": "Immediate demo booking with senior consultant",
+  "reasoning": "High budget, urgent timeline, clear ERP use case, strong operational pain, decision-maker role.",
+  "missing_information": [],
+  "response": {
+    "subject": "ERP Solution for ABC Manufacturing",
+    "message": "Hi Rahul, thanks for sharing your requirements. Improving inventory and production workflows for ABC Manufacturing sounds like a high-priority need. Since your timeline is within 2 weeks, our team can prioritize this quickly. One of our senior consultants will connect shortly to recommend the best-fit ERP solution for your operations."
+  }
+}

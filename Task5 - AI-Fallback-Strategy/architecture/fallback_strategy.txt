@@ -1,0 +1,55 @@
+
+# architecture/fallback_strategy.txt
+
+Fallback Flow
+
+Frontend Request
+↓
+API Gateway
+↓
+AI Orchestrator
+↓
+Retry Layer
+↓
+Primary Provider
+↓ (fails)
+Fallback Provider
+↓
+Queue System (if needed)
+↓
+Asset Storage / CRM Update
+↓
+Frontend Response
+
+Rules:
+
+1. Retry first (2 attempts)
+2. If timeout continues → switch to fallback provider
+3. If both fail → move task to background queue
+4. Show user-friendly status message
+5. Never break the full user flow
+
+Timeout Rules:
+
+* Text AI → 10 sec
+* Image API → 15 sec
+* Video API → 30 sec
+
+Graceful UX Example:
+
+Instead of:
+"Something went wrong"
+
+Show:
+"Your video is taking longer than expected. We are processing it and will notify you shortly."
+
+Partial Response Strategy:
+
+If image succeeds and voice fails:
+
+Return completed image immediately
+Retry voice separately
+
+Do not fail the full request.
+
+---

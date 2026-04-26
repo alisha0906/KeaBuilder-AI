@@ -1,0 +1,129 @@
+{
+  "examples": [
+    {
+      "scenario": "Personalised image — LoRA active (brand face/style consistency)",
+      "description": "Premium user with a trained LoRA for Acme Skincare. Trigger word auto-injected into prompt.",
+      "request": {
+        "user_id": "user_001",
+        "prompt": "professional product shot of moisturiser on marble surface, studio lighting",
+        "lora_id": "lora_acme_brand_v1",
+        "width": 1024,
+        "height": 1024,
+        "num_inference_steps": 30,
+        "guidance_scale": 7.5,
+        "seed": 42
+      },
+      "response": {
+        "request_id": "req_e3b170de31",
+        "user_id": "user_001",
+        "lora_id": "lora_acme_brand_v1",
+        "trigger_word_injected": true,
+        "lora_scale_used": 0.85,
+        "asset_url": "https://cdn.keabuilder.com/generated/user_001/lora_acme_brand_v1/req_e3b170de31.png",
+        "created_at": "2026-04-26T10:19:51.467801+00:00",
+        "latency_ms": 5000,
+        "seed_used": 42,
+        "prompt_final": "acmebrand, professional product shot of moisturiser on marble surface, studio lighting",
+        "status": "success",
+        "error": null
+      },
+      "notes": {
+        "trigger_word_injected": "User did not include 'acmebrand' in their prompt. System injected it automatically. Without this, the LoRA weights activate but have no anchor to apply brand-specific features.",
+        "seed_used": "Fixed seed 42 makes this image reproducible — user can regenerate identically or use as A/B base.",
+        "lora_scale_used": "0.85 = strong brand influence while still following prompt. Scale of 1.0 would override prompt creativity; 0.5 would barely show brand features."
+      }
+    },
+    {
+      "scenario": "Base model generation — no LoRA",
+      "description": "User without a trained LoRA, or not passing lora_id. Falls back to base SDXL.",
+      "request": {
+        "user_id": "user_003",
+        "prompt": "hero banner for a fitness app, bold colours, dynamic athlete",
+        "seed": 99
+      },
+      "response": {
+        "request_id": "req_1ce9f5d8d5",
+        "user_id": "user_003",
+        "lora_id": null,
+        "trigger_word_injected": false,
+        "lora_scale_used": 0.0,
+        "asset_url": "https://cdn.keabuilder.com/generated/user_003/base/req_1ce9f5d8d5.png",
+        "created_at": "2026-04-26T10:19:51.468011+00:00",
+        "latency_ms": 5000,
+        "seed_used": 99,
+        "prompt_final": "hero banner for a fitness app, bold colours, dynamic athlete",
+        "status": "success",
+        "error": null
+      }
+    },
+    {
+      "scenario": "LoRA training — new brand onboarded",
+      "description": "User uploads 20 reference images. System trains a new LoRA adapter.",
+      "request": {
+        "user_id": "user_005",
+        "brand_name": "NovaDerm Cosmetics",
+        "trigger_word": "novaderm",
+        "image_paths": [
+          "uploads/user_005/ref_01.jpg",
+          "uploads/user_005/ref_02.jpg",
+          "... (20 images total)"
+        ],
+        "training_steps": 1000,
+        "lora_rank": 16,
+        "lora_scale": 0.80
+      },
+      "response": {
+        "lora_id": "lora_novaderm_2bab46",
+        "user_id": "user_005",
+        "brand_name": "NovaDerm Cosmetics",
+        "trigger_word": "novaderm",
+        "weights_path": "lora_weights/user_005/lora_novaderm_2bab46.safetensors",
+        "status": "ready",
+        "training_steps_completed": 1000,
+        "training_time_seconds": 1200,
+        "created_at": "2026-04-26T10:19:53.858840+00:00",
+        "error": null
+      },
+      "notes": {
+        "async_in_production": "In production this endpoint returns 202 Accepted immediately. Training runs as a background GPU job (~15-40 min). User is notified via email/webhook when status becomes 'ready'.",
+        "trigger_word": "novaderm is now the activation keyword. Include it in any future prompt to activate this LoRA."
+      }
+    },
+    {
+      "scenario": "Error — LoRA not found",
+      "request": {
+        "user_id": "user_001",
+        "prompt": "product shot",
+        "lora_id": "lora_does_not_exist"
+      },
+      "response": {
+        "request_id": "req_946819d525",
+        "user_id": "user_001",
+        "lora_id": "lora_does_not_exist",
+        "trigger_word_injected": false,
+        "lora_scale_used": 0.0,
+        "asset_url": "",
+        "created_at": "2026-04-26T10:19:51.468127+00:00",
+        "latency_ms": 0,
+        "seed_used": 3377298220,
+        "prompt_final": "product shot",
+        "status": "failed",
+        "error": "LoRA model 'lora_does_not_exist' not found."
+      }
+    },
+    {
+      "scenario": "Error — too few training images",
+      "request": {
+        "user_id": "user_006",
+        "brand_name": "TinyBrand",
+        "trigger_word": "tinybrand",
+        "image_paths": ["uploads/ref_01.jpg", "uploads/ref_02.jpg"]
+      },
+      "response": {
+        "lora_id": "",
+        "status": "failed",
+        "error": "Need at least 10 images, got 2."
+      }
+    }
+  ]
+}

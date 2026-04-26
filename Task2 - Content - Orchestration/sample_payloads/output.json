@@ -1,0 +1,120 @@
+{
+  "examples": [
+    {
+      "scenario": "Premium video — primary provider",
+      "request": {
+        "content_type": "video",
+        "prompt": "Create a product demo video for a skincare brand",
+        "style": "professional",
+        "duration": "30 sec",
+        "user_plan": "premium"
+      },
+      "response": {
+        "asset_id": "vid_53cf37e7",
+        "version": 1,
+        "provider": "runway_ml",
+        "fallback_used": false,
+        "status": "success",
+        "asset_url": "https://cdn.keabuilder.com/assets/vid_53cf37e7/v1/video_vid_53cf37e7.mp4",
+        "created_at": "2026-04-26T08:48:34.134293+00:00",
+        "cost_usd": 0.50,
+        "used_in": ["Landing Page Funnel"]
+      }
+    },
+    {
+      "scenario": "Free image — primary provider (DALL·E)",
+      "request": {
+        "content_type": "image",
+        "prompt": "Hero banner for a fitness app, bold colours",
+        "style": "vibrant",
+        "user_plan": "free"
+      },
+      "response": {
+        "asset_id": "ima_cb13076f",
+        "version": 1,
+        "provider": "dalle",
+        "fallback_used": false,
+        "status": "success",
+        "asset_url": "https://cdn.keabuilder.com/assets/ima_cb13076f/v1/image_ima_cb13076f.png",
+        "created_at": "2026-04-26T08:48:34.134495+00:00",
+        "cost_usd": 0.02,
+        "used_in": []
+      }
+    },
+    {
+      "scenario": "Premium voice — ElevenLabs",
+      "request": {
+        "content_type": "voice",
+        "prompt": "Welcome to KeaBuilder. Build funnels that convert.",
+        "duration": "15 sec",
+        "user_plan": "premium"
+      },
+      "response": {
+        "asset_id": "voi_67491198",
+        "version": 1,
+        "provider": "elevenlabs",
+        "fallback_used": false,
+        "status": "success",
+        "asset_url": "https://cdn.keabuilder.com/assets/voi_67491198/v1/voice_voi_67491198.mp3",
+        "created_at": "2026-04-26T08:48:34.134653+00:00",
+        "cost_usd": 0.03,
+        "used_in": ["Email Campaign A"]
+      }
+    },
+    {
+      "scenario": "Asset versioning — regenerating an existing asset",
+      "request": {
+        "content_type": "video",
+        "prompt": "Create a product demo video for a skincare brand — warmer tone",
+        "style": "lifestyle",
+        "duration": "30 sec",
+        "user_plan": "premium",
+        "asset_id": "vid_53cf37e7"
+      },
+      "response": {
+        "asset_id": "vid_53cf37e7",
+        "version": 2,
+        "provider": "runway_ml",
+        "fallback_used": false,
+        "status": "success",
+        "asset_url": "https://cdn.keabuilder.com/assets/vid_53cf37e7/v2/video_vid_53cf37e7.mp4",
+        "created_at": "2026-04-26T09:15:00.000000+00:00",
+        "cost_usd": 0.50,
+        "used_in": []
+      }
+    },
+    {
+      "scenario": "Fallback triggered — primary provider unavailable",
+      "request": {
+        "content_type": "image",
+        "prompt": "Luxury real estate listing banner, golden hour photography style",
+        "style": "premium",
+        "user_plan": "premium"
+      },
+      "response": {
+        "asset_id": "ima_f4a91c02",
+        "version": 1,
+        "provider": "dalle",
+        "fallback_used": true,
+        "status": "success",
+        "asset_url": "https://cdn.keabuilder.com/assets/ima_f4a91c02/v1/image_ima_f4a91c02.png",
+        "created_at": "2026-04-26T09:30:00.000000+00:00",
+        "cost_usd": 0.02,
+        "used_in": [],
+        "_note": "Stability AI was unavailable; DALL-E used as fallback. fallback_used: true signals this to the UI."
+      }
+    },
+    {
+      "scenario": "Validation failure — missing prompt",
+      "request": {
+        "content_type": "image",
+        "prompt": "",
+        "user_plan": "free"
+      },
+      "response": {
+        "error": "Prompt is required",
+        "status": "failed"
+      }
+    }
+  ]
+}

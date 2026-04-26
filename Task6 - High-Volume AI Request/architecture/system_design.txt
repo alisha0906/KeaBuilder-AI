@@ -1,0 +1,19 @@
+Frontend Request
+      ↓
+API Gateway
+      ↓
+Rate Limiter
+      ↓
+AI Orchestrator
+      ↓
+Queue System
+      ↓
+Load Balanced Workers
+      ↓
+Primary / Fallback Providers
+      ↓
+Cache Layer + Asset Storage
+      ↓
+CRM + Media Library
+      ↓
+Frontend Response

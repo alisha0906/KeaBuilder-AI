@@ -1,0 +1,13 @@
+User Experience Handling
+
+Case 1: Primary provider succeeds → return output immediately
+
+Case 2: Primary fails, fallback succeeds → user sees no failure → smooth experience maintained
+
+Case 3: Both fail → request moves to background queue → user sees progress message
+
+Recommended Message:
+
+"Your request is being processed in the background. We will notify you once it is ready."
+
+This avoids poor UX and preserves trust.
