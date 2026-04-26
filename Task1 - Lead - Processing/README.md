@@ -156,8 +156,8 @@ CRM Update + Sales Team Notification
 ### Environment Management
 - python-dotenv
 
-### Lead Classification Logic
-# HOT Lead
+# Lead Classification Logic
+### HOT Lead
 - urgent requirement
 - strong business pain
 - high buying intent
@@ -165,13 +165,13 @@ CRM Update + Sales Team Notification
 - ready to purchase soon
 - Example : “Need ERP within 2 weeks for factory operations”
 
-# WARM Lead
+### WARM Lead
 - interested but still evaluating
 - moderate urgency
 - medium buying intent
 - Example : “Exploring CRM options this quarter”
 
-# COLD Lead
+### COLD Lead
 - unclear requirement
 - low urgency
 - only researching
@@ -221,8 +221,9 @@ pip install -r code/requirements.txt
 
 ### Add Groq API Key
 Create .env
+```bash
 GROQ_API_KEY=your_actual_api_key_here
-
+```
 ### Run FastAPI Server
 ```bash
 cd code
